@@ -50,7 +50,7 @@ onMounted(() => {
 </script>
 
 <template>
-  <form class="options">
+  <form>
     <div v-if="!props.compact" class="mb-2">
       <label for="authToken" class="form-label"><i class="fa-solid fa-key me-2"></i> Gemini API Key</label>
       <div class="input-group col-12">

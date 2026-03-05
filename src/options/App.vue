@@ -1,11 +1,11 @@
 <script setup lang="ts">
 import { copySupport } from '../utils/options.ts'
-import { isMobile } from '@/utils/system.ts'
+import { isFirefox, isMobile } from '@/utils/system.ts'
 
 import BackToTop from '@/components/BackToTop.vue'
 import PermsCheck from '@/components/PermsCheck.vue'
 import ToastAlerts from '@/components/ToastAlerts.vue'
-import OptionsControls from '@/components/OptionsControls.vue'
+import OptionsForm from '@/components/OptionsForm.vue'
 import KeyboardShortcuts from '@/components/KeyboardShortcuts.vue'
 import PageFooter from '@/components/PageFooter.vue'
 
@@ -67,12 +67,12 @@ document.title = `${manifest.name} Options`
           <hr class="w-100 my-0" />
         </div>
 
-        <OptionsControls />
+        <OptionsForm />
 
-        <PermsCheck :show-info="true" :show-remove="true" />
+        <PermsCheck :show-info="true" :show-remove="isFirefox" class="my-3" />
 
         <p class="fst-italic small mt-3">
-          <a id="copy-support" href="#0" @click="copySupport">Copy Support Information</a> for issue reporting.
+          <a id="copy-support" href="#" @click.prevent="copySupport">Copy Support Information</a> for issue reporting.
         </p>
 
         <hr class="mt-0" />

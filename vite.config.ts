@@ -1,9 +1,7 @@
 import path from 'node:path'
-import { crx } from '@crxjs/vite-plugin'
 import vue from '@vitejs/plugin-vue'
 import { defineConfig } from 'vite'
-import zip from 'vite-plugin-zip-pack'
-import { name, version } from './package.json'
+import { crx } from '@crxjs/vite-plugin'
 import manifest from './manifest.config.ts'
 
 export default defineConfig({
@@ -14,11 +12,7 @@ export default defineConfig({
       '~bootswatch': path.resolve(__dirname, 'node_modules/bootswatch'),
     },
   },
-  plugins: [
-    vue(),
-    crx({ manifest }),
-    zip({ outDir: 'web-ext-artifacts', outFileName: `${name}-chrome-${version}.zip` }),
-  ],
+  plugins: [vue(), crx({ manifest })],
   server: {
     cors: {
       origin: [/chrome-extension:\/\//],

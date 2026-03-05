@@ -2,20 +2,23 @@
 import ResultsTable from '@/components/ResultsTable.vue'
 import ToastAlerts from '@/components/ToastAlerts.vue'
 import BackToTop from '@/components/BackToTop.vue'
-import HeaderPanel from '@/components/HeaderPanel.vue'
+import PanelHeader from '@/components/PanelHeader.vue'
 import SearchBox from '@/components/SearchBox.vue'
 import PanelFooter from '@/components/PanelFooter.vue'
+import PermsCheck from '@/components/PermsCheck.vue'
 </script>
 
 <template>
   <header class="flex-shrink-0">
-    <HeaderPanel :side-button="false" />
+    <PanelHeader :side-button="false" />
   </header>
 
-  <main class="flex-grow-1 overflow-auto">
-    <SearchBox class="p-1" />
-
-    <ResultsTable />
+  <main class="flex-grow-1 overflow-auto p-1">
+    <div class="d-grid gap-2">
+      <PermsCheck />
+      <SearchBox />
+      <ResultsTable />
+    </div>
   </main>
 
   <footer class="flex-shrink-0">

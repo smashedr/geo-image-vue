@@ -91,8 +91,8 @@ onMounted(() => {
 </script>
 
 <template>
-  <div class="container-fluid p-1">
-    <table id="history-table" class="table table-sm table-striped w-100" style="table-layout: fixed">
+  <div>
+    <table id="history-table" class="table table-sm table-striped" style="table-layout: fixed">
       <thead>
         <tr>
           <th class="text-center" style="width: 28px"><i class="fa-solid fa-list-ol"></i></th>
@@ -103,33 +103,32 @@ onMounted(() => {
       </thead>
       <tbody></tbody>
     </table>
-  </div>
 
-  <div
-    class="modal fade"
-    id="delete-modal"
-    ref="deleteModalEl"
-    tabindex="-1"
-    aria-labelledby="delete-modal-label"
-    aria-hidden="true"
-  >
-    <div class="modal-dialog modal-dialog-centered">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h1 class="modal-title fs-5" id="delete-modal-label">Delete Analysis</h1>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" tabindex="-1"></button>
-        </div>
-        <div class="modal-body text-center p-2">
-          <p class="mb-1">Confirm deleting this analysis?</p>
-          <p class="text-break fs-4 mb-1">
-            <kbd>{{ hostToDelete }}</kbd>
-          </p>
-        </div>
-        <div class="modal-footer p-2">
-          <button type="button" class="btn btn-danger me-auto" @click="confirmDelete">
-            Delete <i class="fa-regular fa-trash-can ms-2"></i>
-          </button>
-          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+    <div
+      class="modal fade"
+      id="delete-modal"
+      ref="deleteModalEl"
+      tabindex="-1"
+      aria-labelledby="delete-modal-label"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h1 class="modal-title fs-5" id="delete-modal-label">Delete Analysis</h1>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" tabindex="-1"></button>
+          </div>
+          <div class="modal-body text-center p-2">
+            <p class="mb-1">
+              Confirm deleting analysis <kbd>{{ hostToDelete }}</kbd> ?
+            </p>
+          </div>
+          <div class="modal-footer p-2">
+            <button type="button" class="btn btn-danger me-auto" @click="confirmDelete">
+              Delete <i class="fa-regular fa-trash-can ms-2"></i>
+            </button>
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+          </div>
         </div>
       </div>
     </div>

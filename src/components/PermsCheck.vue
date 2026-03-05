@@ -74,35 +74,41 @@ onUnmounted(() => {
 </script>
 
 <template>
-  <div v-if="!hasPerms" class="my-2 text-center">
-    <button
-      class="btn btn-lg btn-success w-100 mb-2 grant-permissions"
-      type="button"
-      data-bs-toggle="tooltip"
-      data-bs-placement="top"
-      data-bs-trigger="hover"
-      data-bs-title="This Extension Requires Host Permissions to Function."
-      @click="grantPerms"
-    >
-      <i class="fa-solid fa-check-double me-1"></i> Grant Host Permissions
-    </button>
-    <p v-if="showInfo" class="text-center"><a href="/src/permissions/index.html">More Information on Permissions</a></p>
-  </div>
+  <div>
+    <div v-if="!hasPerms" class="text-center d-grid gap-2">
+      <button
+        class="btn btn-lg btn-success"
+        type="button"
+        data-bs-toggle="tooltip"
+        data-bs-placement="top"
+        data-bs-trigger="hover"
+        data-bs-title="This Extension Requires Host Permissions to Function."
+        @click="grantPerms"
+      >
+        <i class="fa-solid fa-check-double me-1"></i> Grant Host Permissions
+      </button>
+      <p v-if="showInfo" class="text-center mb-0">
+        <a href="/src/permissions/index.html">More Information on Permissions</a>
+      </p>
+    </div>
 
-  <div v-if="hasPerms && props.showAlert" class="alert alert-success mt-3 mb-0" role="alert">Permissions Granted.</div>
+    <div v-if="hasPerms && props.showAlert" class="alert alert-success mt-3 mb-0" role="alert">
+      Permissions Granted.
+    </div>
 
-  <div v-if="hasPerms && props.showRemove" class="my-3">
-    <button
-      class="btn btn-link link-danger revoke-permissions"
-      type="button"
-      data-bs-toggle="tooltip"
-      data-bs-placement="top"
-      data-bs-trigger="hover"
-      data-bs-title="Google Chrome does not allow removing required permissions via this method."
-      @click="revokePerms"
-    >
-      Remove Host Permissions
-    </button>
+    <div v-if="hasPerms && props.showRemove">
+      <button
+        class="btn btn-link link-danger revoke-permissions"
+        type="button"
+        data-bs-toggle="tooltip"
+        data-bs-placement="top"
+        data-bs-trigger="hover"
+        data-bs-title="Google Chrome does not allow removing required permissions via this method."
+        @click="revokePerms"
+      >
+        Remove Host Permissions
+      </button>
+    </div>
   </div>
 </template>
 

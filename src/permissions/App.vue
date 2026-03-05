@@ -12,8 +12,8 @@ async function onAdded(permissions: chrome.permissions.Permissions) {
   console.debug('onAdded:', permissions)
   if (document.hasFocus()) {
     await chrome.runtime.openOptionsPage()
+    window.close()
   }
-  window.close()
 }
 
 const manifest = chrome.runtime.getManifest()
@@ -31,7 +31,7 @@ document.title = `${manifest.name} Permissions`
             <h1>GeoImage</h1>
           </div>
 
-          <PermsCheck :show-alert="true" :show-remove="true" />
+          <PermsCheck :show-alert="true" class="my-2" />
 
           <p>To download an image on Chrome for upload to the API, host permissions are required.</p>
           <a class="btn btn-lg btn-outline-info w-100 mb-3" href="/src/options/index.html">
