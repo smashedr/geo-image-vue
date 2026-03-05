@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { onMounted, ref } from 'vue'
-import { getGeoUrl, LocationData, processUrl } from '@/utils/api.ts'
+import { getGeoUrl, processUrl, LocationData } from '@/utils/api.ts'
 import { showToast } from '@/composables/useToast.ts'
 import { openOptions } from '@/utils/extension.ts'
 
@@ -18,10 +18,22 @@ const data = ref<LocationData | null>(null)
 
 const manifest = chrome.runtime.getManifest()
 console.debug('manifest:', manifest)
-console.debug('document.title:', document.title)
-const title = `${manifest.name} Results`
-console.debug('title:', title)
+const title = `${manifest.name} Processing...`
 if (document.title === '') document.title = title
+
+function setIcon(path: string, create = false) {
+  let link = document.querySelector('link[rel="icon"]') as HTMLLinkElement
+  if (link) {
+    link.href = chrome.runtime.getURL(path)
+    console.debug('setIcon:', link.href)
+  } else if (create) {
+    link = document.createElement('link')
+    link.rel = 'icon'
+    document.head.appendChild(link)
+    link.href = chrome.runtime.getURL(path)
+    console.debug('setIcon:', link.href)
+  }
+}
 
 onMounted(() => {
   const params = new URLSearchParams(window.location.search)
@@ -30,39 +42,24 @@ onMounted(() => {
 
   srcUrl.value = url
 
-  // NOTE: Use a ref
-  let link = document.querySelector('link[rel="icon"]') as HTMLLinkElement
-  if (!link) {
-    link = document.createElement('link')
-    link.rel = 'icon'
-    document.head.appendChild(link)
-  }
-  console.debug('link:', link)
-  const linkHref = link.href
-
   processUrl(url)
     .then((result) => {
       console.debug('result:', result)
       data.value = result
       geoHref.value = getGeoUrl(data.value)
-      document.title = `${title} - ${data.value.location}`
-      if (link.href !== linkHref) link.href = linkHref
+      document.title = `${data.value.location} - ${title}`
+      setIcon('/images/logo16.png')
     })
     .catch((e) => {
       console.log(e)
       errorMessage.value = e.message
       document.title = `${title} - Error`
-
-      // NOTE: This needs to be set back...
-      const path = `/images/error128.png`
-      link.href = chrome.runtime.getURL(path)
-
+      setIcon('/images/error128.png', true)
       showToast(e.message, 'danger')
       hasError.value = true
     })
     .finally(() => {
       isProcessing.value = false
-      console.debug('Done')
     })
 })
 </script>

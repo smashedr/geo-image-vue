@@ -64,7 +64,7 @@ onMounted(() => {
           @change="saveOptions"
         />
         <button
-          class="btn btn-outline-success"
+          class="btn btn-outline-primary"
           type="button"
           data-bs-toggle="tooltip"
           data-bs-placement="bottom"
@@ -76,7 +76,7 @@ onMounted(() => {
         </button>
         <button
           id="authTokenCopy"
-          class="btn btn-outline-primary"
+          class="btn btn-outline-success"
           type="button"
           data-bs-toggle="tooltip"
           data-bs-placement="bottom"

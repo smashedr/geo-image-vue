@@ -1,6 +1,15 @@
 <script setup lang="ts">
 import { onMounted, ref } from 'vue'
 
+const props = withDefaults(
+  defineProps<{
+    btnClass?: string
+  }>(),
+  {
+    btnClass: 'btn-link',
+  },
+)
+
 const backToTop = ref<HTMLElement | null>(null)
 
 const onScroll = () => {
@@ -37,7 +46,7 @@ const topClick = () => {
 </script>
 
 <template>
-  <button ref="backToTop" id="back-to-top" type="button" class="btn btn-outline-secondary" @click="topClick">
+  <button ref="backToTop" id="back-to-top" type="button" :class="['btn', props.btnClass]" @click="topClick">
     <i class="fa-regular fa-square-caret-up"></i>
   </button>
 </template>

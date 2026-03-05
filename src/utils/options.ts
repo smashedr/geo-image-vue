@@ -16,21 +16,14 @@ export async function getOptions(): Promise<Options> {
 
 // NOTE: Below is ported from VanillaJS
 
-/**
- * Save Options Callback
- * @function saveOptions
- * @param {UIEvent} event
- */
-export async function saveOptions(event: Event) {
+export async function saveOptions(event: Event) /* NOSONAR */ {
   console.debug('saveOptions:', event)
-  // const { options } = await chrome.storage.sync.get(['options'])
   const options = await getOptions()
   const target = event.target as HTMLInputElement
   let key = target.id
   let value
   if (target.type === 'radio') {
     key = target.name
-    // const radios = document.getElementsByName(key)
     const radios = document.getElementsByName(key) as unknown as HTMLInputElement[]
     for (const input of radios) {
       if (input.checked) {
@@ -42,21 +35,27 @@ export async function saveOptions(event: Event) {
     value = target.checked
   } else if (target.type === 'number') {
     const number = Number.parseFloat(target.value)
-    let min = Number.parseFloat(target.min)
-    let max = Number.parseFloat(target.max)
-    if (!Number.isNaN(number) && number >= min && number <= max) {
+    if (
+      !Number.isNaN(number) &&
+      number >= Number.parseFloat(target.min) &&
+      number <= Number.parseFloat(target.max)
+    ) {
+      // Valid number
       target.value = number.toString()
       value = number
     } else {
-      target.value = String(options[target.id])
+      // Invalid number - revert to last saved value
+      target.value = String(options[key])
       return
     }
   } else {
     value = target.value
   }
-  if (value !== undefined) {
+  if (options[key] === value) {
+    return console.log(`Value not changed for key: %c${key}`, 'color: Yellow')
+  } else if (value !== undefined) {
     options[key] = value
-    console.log(`Set %c${key}:`, 'color: Khaki', value)
+    console.log(`Set %c${key}:`, 'color: Lime', value)
     await chrome.storage.sync.set({ options })
   } else {
     console.warn(`No Value for key: ${key}`)
