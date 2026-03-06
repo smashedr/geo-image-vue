@@ -31,18 +31,18 @@ jobs:
       - name: "Install"
         run: npm ci
 
-      - name: "Update Manifest Version"
+      - name: "Update Version"
         if: ${{ github.event_name == 'release' }}
         uses: cssnr/update-json-value-action@v2
         with:
           values: ${{ inputs.version }}
-          file: dist/manifest.json
+          file: package.json
 
-      - name: "Verify Manifest"
+      - name: "Verify Version"
         if: ${{ github.event_name == 'release' }}
         run: |
-          yq -e '.version | test("${{ inputs.version }}")' dist/manifest.json
-          cat -n manifest.json
+          yq -e '.version | test("${{ inputs.version }}")' package.json
+          cat -n package.json
 
       - name: "Build"
         run: npm run build:all
