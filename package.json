@@ -6,6 +6,7 @@
   "private": true,
   "scripts": {
     "dev": "vite",
+    "dev:ff": "vite build --watch --mode firefox",
     "clean": "rm -rf dist",
     "build": "vue-tsc -b && vite build",
     "build:watch": "vite build --watch --mode development",
@@ -31,7 +32,7 @@
     "@types/bootstrap": "^5.2.10",
     "@types/chrome": "^0.1.37",
     "@types/firefox-webext-browser": "^143.0.0",
-    "@types/node": "^25.3.3",
+    "@types/node": "^25.3.4",
     "@vitejs/plugin-vue": "^6.0.4",
     "@vue/tsconfig": "^0.9.0",
     "prettier": "^3.8.1",
