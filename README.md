@@ -38,7 +38,7 @@ Works with a Free Gemini API Key: https://aistudio.google.com/app/api-keys
 ## Install
 
 [![Chrome](https://raw.githubusercontent.com/smashedr/logo-icons/master/browsers/chrome_48.png)](https://chromewebstore.google.com/detail/geoimage/ipliinigkdddaaeaoncoljmdaoabgjdo)
-[![Firefox](https://raw.githubusercontent.com/smashedr/logo-icons/master/browsers/firefox_48.png)](https://github.com/cssnr/geo-image/releases/latest/download/geo_image-firefox.xpi)
+[![Firefox](https://raw.githubusercontent.com/smashedr/logo-icons/master/browsers/firefox_48.png)](https://github.com/cssnr/geo-image/releases/latest/download/geoimage-firefox.xpi)
 [![Edge](https://raw.githubusercontent.com/smashedr/logo-icons/master/browsers/edge_48.png)](https://chromewebstore.google.com/detail/geoimage/ipliinigkdddaaeaoncoljmdaoabgjdo)
 [![Brave](https://raw.githubusercontent.com/smashedr/logo-icons/master/browsers/brave_48.png)](https://chromewebstore.google.com/detail/geoimage/ipliinigkdddaaeaoncoljmdaoabgjdo)
 [![Opera](https://raw.githubusercontent.com/smashedr/logo-icons/master/browsers/opera_48.png)](https://chromewebstore.google.com/detail/geoimage/ipliinigkdddaaeaoncoljmdaoabgjdo)
@@ -47,10 +47,10 @@ Works with a Free Gemini API Key: https://aistudio.google.com/app/api-keys
 All **Chromium** Based Browsers can install the extension from the
 [Chrome Web Store](https://chromewebstore.google.com/detail/geoimage/ipliinigkdddaaeaoncoljmdaoabgjdo).
 
-- Download a [Chrome Release](https://github.com/cssnr/geo-image/releases/latest/download/geo_image-chrome.crx) from GitHub
-- Download a [Firefox Release](https://github.com/cssnr/geo-image/releases/latest/download/geo_image-firefox.xpi) from GitHub
+- Download a [Chrome Release](https://github.com/cssnr/geo-image/releases/latest/download/geoimage-chrome.crx) from GitHub
+- Download a [Firefox Release](https://github.com/cssnr/geo-image/releases/latest/download/geoimage-firefox.xpi) from GitHub
 
-[![Android QR Code](https://raw.githubusercontent.com/smashedr/repo-images/refs/heads/master/geo-image/qr-code-android.png)](https://github.com/cssnr/geo-image/releases/latest/download/geo_image-firefox.xpi)
+[![Android QR Code](https://raw.githubusercontent.com/smashedr/repo-images/refs/heads/master/geo-image/qr-code-android.png)](https://github.com/cssnr/geo-image/releases/latest/download/geoimage-firefox.xpi)
 
 _Note: To install self-hosted extensions on Android you must enable a hidden menu item:_
 [_https://extensionworkshop.com/documentation/publish/install-self-distributed_](https://extensionworkshop.com/documentation/publish/install-self-distributed/#install-addon-from-file-android)
