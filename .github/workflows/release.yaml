@@ -5,7 +5,7 @@ on:
     types: [published]
 
 env:
-  PACKAGE_NAME: geo_image
+  PACKAGE_NAME: geoimage
   CHROME_ID: ipliinigkdddaaeaoncoljmdaoabgjdo
   MOZILLA_ID: geo-image@cssnr.com
   MOZILLA_CHANNEL: unlisted
