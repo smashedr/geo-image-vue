@@ -44,8 +44,9 @@ async function updateTable() {
     hostLink.target = '_blank'
     hostLink.addEventListener('click', (e) => {
       e.preventDefault()
-      activateOrOpen(hostLink.href)
-      if (props.closeWindow) window.close()
+      activateOrOpen(hostLink.href).then(() => {
+        if (props.closeWindow) window.close()
+      })
     })
     cell2.classList.add('text-truncate')
     cell2.appendChild(hostLink)
