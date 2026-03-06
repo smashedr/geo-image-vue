@@ -2,6 +2,17 @@
 import { activateOrOpen } from '@/utils/extension.ts'
 import { showToast } from '@/composables/useToast.ts'
 
+const props = withDefaults(
+  defineProps<{
+    closeWindow?: boolean
+  }>(),
+  {
+    closeWindow: false,
+  },
+)
+
+console.debug('closeWindow:', props.closeWindow)
+
 async function processForm(event: Event) {
   console.debug('processForm:', event)
   try {
@@ -19,9 +30,8 @@ async function processForm(event: Event) {
     target.reset()
     const encoded = encodeURIComponent(url.href)
     const page = chrome.runtime.getURL(`/src/page/index.html?url=${encoded}`)
-    return activateOrOpen(page)
-
-    // if (target.dataset.close !== undefined) window.close()
+    await activateOrOpen(page)
+    if (props.closeWindow) window.close()
   } catch (e) {
     if (e instanceof Error) showToast(e.message, 'danger')
   }

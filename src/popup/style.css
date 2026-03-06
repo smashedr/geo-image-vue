@@ -1,13 +1,2 @@
-#app {
-    /* NOTE: These are Firefox workarounds */
-    min-width: 390px; /* firefox */
-    width: 100%; /* mobile */
-    max-width: 100vw; /* firefox */
-
-    /*min-width: 360px;*/
-    /*max-width: 800px;*/
-
-    /*margin: 0 auto;*/
-    /*padding: 2rem;*/
-    /*text-align: center;*/
-}
+/*#app {*/
+/*}*/

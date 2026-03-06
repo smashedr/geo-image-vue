@@ -37,6 +37,34 @@ and load the unpacked extension from the `dist` directory.
 
 This requires refreshing the page and reloading the extension when required.
 
+### Android
+
+This requires the [Android Debug Bridge (adb)](https://developer.android.com/tools/adb).
+
+In another terminal (or without the watcher run `npm build:firefox`).
+
+```shell
+npm run dev:ff
+```
+
+Enable USB or Wireless Debugging and get your device `name`.
+
+```shell
+adb devices
+```
+
+Then run using your device `name`.
+
+```shell
+npm run android -- name
+```
+
+Or run directly w/o the --firefox-apk flag from the script.
+
+```shell
+web-ext run -t firefox-android -s dist --adb-device name
+```
+
 ## Building
 
 To create all archives in the `web-ext-artifacts` directory.

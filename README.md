@@ -52,7 +52,7 @@ All **Chromium** Based Browsers can install the extension from the
 
 [![Android QR Code](https://raw.githubusercontent.com/smashedr/repo-images/refs/heads/master/geo-image/qr-code-android.png)](https://github.com/cssnr/geo-image/releases/latest/download/geo_image-firefox.xpi)
 
-_Note: To install self-hosted extensions on Android you must enable a hidden menu item:_  
+_Note: To install self-hosted extensions on Android you must enable a hidden menu item:_
 [_https://extensionworkshop.com/documentation/publish/install-self-distributed_](https://extensionworkshop.com/documentation/publish/install-self-distributed/#install-addon-from-file-android)
 
 ## Features

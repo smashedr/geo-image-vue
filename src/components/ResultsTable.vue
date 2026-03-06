@@ -7,6 +7,15 @@ import { activateOrOpen } from '@/utils/extension.ts'
 
 const { getAllLocations, deleteLocation, locationDBChannel } = useLocationsDB()
 
+const props = withDefaults(
+  defineProps<{
+    closeWindow?: boolean
+  }>(),
+  {
+    closeWindow: false,
+  },
+)
+
 const hostToDelete = ref<string>('')
 const deleteModalEl = ref<HTMLElement | null>(null)
 
@@ -36,6 +45,7 @@ async function updateTable() {
     hostLink.addEventListener('click', (e) => {
       e.preventDefault()
       activateOrOpen(hostLink.href)
+      if (props.closeWindow) window.close()
     })
     cell2.classList.add('text-truncate')
     cell2.appendChild(hostLink)
