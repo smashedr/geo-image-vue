@@ -25,8 +25,11 @@ jobs:
 
       - name: "Install"
         id: install
-        run: |
-          npm ci
+        run: npm ci
+
+      - name: "Build"
+        if: ${{ !cancelled() }}
+        run: npm run build
 
       #- name: "eslint"
       #  if: ${{ !cancelled() }}
@@ -35,8 +38,7 @@ jobs:
 
       - name: "prettier"
         if: ${{ !cancelled() }}
-        run: |
-          npm run prettier:check
+        run: npm run prettier:check
 
       - name: "yamllint"
         if: ${{ !cancelled() }}
